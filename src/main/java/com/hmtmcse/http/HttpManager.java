@@ -82,18 +82,17 @@ public class HttpManager {
                 case HttpRequest.POST:
                 case HttpRequest.PUT:
                 case HttpRequest.DELETE_POST:
-                    httpURLConnection.setDoOutput(true);
-                    dataOutputStream  = new DataOutputStream(httpURLConnection.getOutputStream());
                     if (httpRequest.httpMethod.equals(HttpRequest.DELETE_POST)){
                         httpURLConnection.setRequestMethod(HttpRequest.DELETE);
                     }else{
                         httpURLConnection.setRequestMethod(httpRequest.httpMethod);
                     }
 
+                    httpURLConnection.setDoOutput(true);
+                    dataOutputStream  = new DataOutputStream(httpURLConnection.getOutputStream());
                     if (httpRequest.params != null){
                         dataOutputStream.writeBytes(httpRequest.params);
                     }
-
                     dataOutputStream.flush();
                     dataOutputStream.close();
                     break;

@@ -17,14 +17,14 @@ public class HttpRequest {
 
     protected Integer connectionTimeout = 30000;
     protected Integer fileBufferSize = 1024;
-    protected String userAgent = "HMTMCSE/1.0";
+    protected String userAgent = "Mozilla/5.0";
 
     protected String httpMethod = GET;
     protected String url = null;
     protected String params = null;
     protected String contextType = APPLICATION_FORM_URLENCODED;
     protected List<RequestHeader> headers = new ArrayList<>();
-    protected Boolean isEnableRedirectHandle = true;
+    protected Boolean isEnableRedirectHandle = false;
     protected Boolean isDownload = false;
     protected String fileName;
     protected String filePath;
@@ -117,8 +117,15 @@ public class HttpRequest {
             URI uri = new URI(_url.getProtocol(), _url.getUserInfo(), _url.getHost(), _url.getPort(), _url.getPath(), _url.getQuery(), _url.getRef());
             return uri.toString();
         } catch (MalformedURLException | UnsupportedEncodingException | URISyntaxException e) {
-            e.printStackTrace();
+            return myUrl;
         }
-        return myUrl;
+    }
+
+    public String urlEncode(String value){
+        try {
+            return URLDecoder.decode(value, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            return value;
+        }
     }
 }

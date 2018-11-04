@@ -45,7 +45,7 @@ public class HttpTool extends HttpRequest {
         if (paramMap != null){
             StringBuilder keyValue = new StringBuilder();
             for (Map.Entry<String, Object> entry : paramMap.entrySet()){
-                keyValue.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
+                keyValue.append(entry.getKey()).append("=").append(urlEncode(entry.getValue().toString())).append("&");
             }
             return keyValue.substring(0, keyValue.length() - 1);
         }
@@ -108,8 +108,8 @@ public class HttpTool extends HttpRequest {
     public HttpResponse send() throws HttpExceptionHandler {
         HttpManager httpManager = new HttpManager();
         this.params = getRequestParams();
+        this.url = toURL(this.url);
         if (this.httpMethod.equals(GET)){
-            this.url = toURL(this.url);
             this.url = getRequestUrlWithParams();
             this.url = toURL(this.url);
         }
