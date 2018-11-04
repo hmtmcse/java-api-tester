@@ -17,7 +17,7 @@ public class HttpRequest {
 
     protected Integer connectionTimeout = 30000;
     protected Integer fileBufferSize = 1024;
-    protected String userAgent = "Mozilla/5.0";
+    protected String userAgent = "HMTMCSE/1.0";
 
     protected String httpMethod = GET;
     protected String url = null;
