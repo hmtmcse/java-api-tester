@@ -12,7 +12,7 @@ public class Main {
         try {
             HMTMConfigHolder.isDebug = true;
             HttpResponse httpResponse = HttpTool.instance()
-                    .post("http://localhost:8080/api/v2/user/list?touhid=xyz mia&xyz=abc").addParam("oi", "touhid vai")
+                    .get("http://localhost:8080/api/v2/user/list?touhid=xyz mia&xyz=abc").addParam("oi", "touhid vai")
                     .send();
             HMTMUtil.print(httpResponse.getContent());
         } catch (HttpExceptionHandler httpExceptionHandler) {

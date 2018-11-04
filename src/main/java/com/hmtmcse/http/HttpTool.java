@@ -111,7 +111,6 @@ public class HttpTool extends HttpRequest {
         this.url = toURL(this.url);
         if (this.httpMethod.equals(GET)){
             this.url = getRequestUrlWithParams();
-            this.url = toURL(this.url);
         }
         return httpManager.requestTo(this);
     }
