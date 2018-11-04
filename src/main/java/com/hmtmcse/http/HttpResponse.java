@@ -1,9 +1,9 @@
-package com.hmtmcse.http.data;
+package com.hmtmcse.http;
 
 public class HttpResponse {
 
-    public Integer httpCode = null;
-    public String content = null;
+    protected Integer httpCode = null;
+    protected String content = null;
 
     public Integer getHttpCode() {
         return httpCode;

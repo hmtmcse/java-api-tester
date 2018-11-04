@@ -1,5 +1,7 @@
-package com.hmtmcse.http.data;
+package com.hmtmcse.http;
 
+import java.io.UnsupportedEncodingException;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,19 +15,19 @@ public class HttpRequest {
     public static final String DELETE = "DELETE";
     public static final String DELETE_POST = "DELETE_POST";
 
-    public Integer connectionTimeout = 30000;
-    public Integer fileBufferSize = 1024;
-    public String userAgent = "HMTMCSE/1.0";
+    protected Integer connectionTimeout = 30000;
+    protected Integer fileBufferSize = 1024;
+    protected String userAgent = "HMTMCSE/1.0";
 
-    public String httpMethod = GET;
-    public String url = null;
-    public String params = null;
-    public String contextType = APPLICATION_FORM_URLENCODED;
-    public List<RequestHeader> headers = new ArrayList<>();
-    public Boolean isEnableRedirectHandle = true;
-    public Boolean isDownload = false;
-    public String fileName;
-    public String filePath;
+    protected String httpMethod = GET;
+    protected String url = null;
+    protected String params = null;
+    protected String contextType = APPLICATION_FORM_URLENCODED;
+    protected List<RequestHeader> headers = new ArrayList<>();
+    protected Boolean isEnableRedirectHandle = true;
+    protected Boolean isDownload = false;
+    protected String fileName;
+    protected String filePath;
 
     public Integer getConnectionTimeout() {
         return connectionTimeout;
@@ -106,5 +108,17 @@ public class HttpRequest {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String toURL(String myUrl){
+        try {
+            String decodedURL = URLDecoder.decode(myUrl, "UTF-8");
+            URL _url = new URL(decodedURL);
+            URI uri = new URI(_url.getProtocol(), _url.getUserInfo(), _url.getHost(), _url.getPort(), _url.getPath(), _url.getQuery(), _url.getRef());
+            return uri.toString();
+        } catch (MalformedURLException | UnsupportedEncodingException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return myUrl;
     }
 }

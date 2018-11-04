@@ -1,9 +1,9 @@
-package com.hmtmcse.http.data;
+package com.hmtmcse.http;
 
 public class RequestHeader {
 
-    public String key;
-    public String value;
+    protected String key;
+    protected String value;
 
     public String getKey() {
         return key;

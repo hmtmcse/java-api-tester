@@ -1,9 +1,7 @@
 package com.hmtmcse.http;
 
 import com.hmtmcse.common.HMTMUtil;
-import com.hmtmcse.http.data.HttpRequest;
-import com.hmtmcse.http.data.HttpResponse;
-import com.hmtmcse.http.data.RequestHeader;
+
 import java.io.*;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;

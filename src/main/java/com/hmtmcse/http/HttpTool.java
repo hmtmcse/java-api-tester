@@ -1,8 +1,9 @@
 package com.hmtmcse.http;
 
-import com.hmtmcse.http.data.HttpRequest;
-import com.hmtmcse.http.data.HttpResponse;
-
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -17,6 +18,24 @@ public class HttpTool extends HttpRequest {
         }
         paramMap.put(key, value);
         return this;
+    }
+
+    private String getRequestUrlWithParams(){
+        if (this.url != null && this.params != null){
+            try {
+                URI uri = new URI(this.url);
+                StringBuilder stringBuilder = new StringBuilder(uri.getQuery() == null ? "" : uri.getQuery());
+                if (stringBuilder.length() > 0){
+                    stringBuilder.append('&');
+                }
+                stringBuilder.append(this.params);
+                URI newURI = new URI(uri.getScheme(), uri.getAuthority(), uri.getPath(), stringBuilder.toString() , uri.getFragment());
+                return newURI.toString();
+            } catch (URISyntaxException e) {
+                return this.url;
+            }
+        }
+        return this.url;
     }
 
     public String getRequestParams() {
@@ -89,6 +108,11 @@ public class HttpTool extends HttpRequest {
     public HttpResponse send() throws HttpExceptionHandler {
         HttpManager httpManager = new HttpManager();
         this.params = getRequestParams();
+        if (this.httpMethod.equals(GET)){
+            this.url = toURL(this.url);
+            this.url = getRequestUrlWithParams();
+            this.url = toURL(this.url);
+        }
         return httpManager.requestTo(this);
     }
 
