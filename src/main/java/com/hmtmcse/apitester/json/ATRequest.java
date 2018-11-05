@@ -42,4 +42,12 @@ public class ATRequest {
     public void setResponse(ATResponse response) {
         this.response = response;
     }
+
+    public JsonNode getParams() {
+        return params;
+    }
+
+    public void setParams(JsonNode params) {
+        this.params = params;
+    }
 }

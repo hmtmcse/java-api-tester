@@ -1,10 +1,12 @@
 package com.hmtmcse.apitester.json;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 public class ATResponse {
 
     public Integer httpCode;
     public String contextType = null;
-    public String content;
+    public JsonNode content;
 
     public Integer getHttpCode() {
         return httpCode;
@@ -22,11 +24,11 @@ public class ATResponse {
         this.contextType = contextType;
     }
 
-    public String getContent() {
+    public JsonNode getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(JsonNode content) {
         this.content = content;
     }
 }
