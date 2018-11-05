@@ -36,6 +36,7 @@ public class HttpTool extends HttpRequest {
         return this.url;
     }
 
+
     public String getRequestParams() {
         if (this.params != null){
             return this.params;
@@ -68,17 +69,41 @@ public class HttpTool extends HttpRequest {
         return this;
     }
 
-    public HttpTool download() {
+
+    public HttpTool download(String url, String savedPath) {
+        return download(url, savedPath, null);
+    }
+
+
+    public HttpTool download(String url, String savedPath, String fileName) {
+        this.url = url;
+        this.fileName = fileName;
+        this.filePath = savedPath;
+        this.isDownload = true;
         return this;
     }
 
-    public HttpTool postDownload() {
+
+    public HttpTool postDownload(String url, String savedPath, String fileName) {
+        this.url = url;
+        httpMethod = POST;
+        this.fileName = fileName;
+        this.filePath = savedPath;
+        this.isDownload = true;
         return this;
     }
 
-    public HttpTool putDownload() {
+
+
+    public HttpTool putDownload(String url, String savedPath, String fileName) {
+        this.url = url;
+        httpMethod = PUT;
+        this.fileName = fileName;
+        this.filePath = savedPath;
+        this.isDownload = true;
         return this;
     }
+
 
     public HttpTool get(String url) {
         this.url = url;
@@ -90,23 +115,38 @@ public class HttpTool extends HttpRequest {
         return this;
     }
 
-    public HttpTool put() {
+    public HttpTool put(String url) {
+        httpMethod = PUT;
+        this.url = url;
         return this;
     }
 
-    public HttpTool jsonPut() {
+    public HttpTool jsonPut(String url, String jsonString) {
+        contextType = APPLICATION_JSON;
+        httpMethod = PUT;
+        params = jsonString;
+        this.url = url;
         return this;
     }
 
-    public HttpTool delete() {
+
+    public HttpTool delete(String url) {
+        httpMethod = DELETE;
+        this.url = url;
         return this;
     }
 
-    public HttpTool jsonDelete() {
+    public HttpTool jsonDelete(String url, String jsonString) {
+        contextType = APPLICATION_JSON;
+        httpMethod = DELETE_POST;
+        params = jsonString;
+        this.url = url;
         return this;
     }
 
-    public HttpTool deletePost() {
+    public HttpTool deletePost(String url) {
+        httpMethod = DELETE_POST;
+        this.url = url;
         return this;
     }
 
