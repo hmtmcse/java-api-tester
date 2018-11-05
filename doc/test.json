@@ -6,7 +6,10 @@
       "url": "/api/v2/product/create",
       "method": "post",
       "contextType": "application/json",
-      "params": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "class": 2
+      },
       "response": {
         "contextType": "application/json",
         "httpCode": 200,

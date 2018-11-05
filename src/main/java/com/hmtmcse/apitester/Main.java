@@ -1,5 +1,6 @@
 package com.hmtmcse.apitester;
 
+import com.hmtmcse.apitester.json.ATTestCases;
 import com.hmtmcse.common.HMTMConfigHolder;
 import com.hmtmcse.common.HMTMUtil;
 import com.hmtmcse.http.HttpExceptionHandler;
@@ -9,6 +10,10 @@ import com.hmtmcse.http.HttpTool;
 public class Main {
 
     public static void main(String[] args) {
+
+        ATTestCases.xyz();
+        System.exit(0);
+
         try {
             HMTMConfigHolder.isDebug = true;
             HttpResponse httpResponse = HttpTool.instance()
