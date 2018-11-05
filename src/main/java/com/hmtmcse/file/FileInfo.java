@@ -6,6 +6,7 @@ import java.util.List;
 public class FileInfo {
 
     public String name;
+    public String fileExtension = null;
     public String absolutePath;
     public Long lastModified;
     public Boolean isDirectory = false;
@@ -59,5 +60,13 @@ public class FileInfo {
 
     public void setFile(Boolean file) {
         isFile = file;
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
     }
 }

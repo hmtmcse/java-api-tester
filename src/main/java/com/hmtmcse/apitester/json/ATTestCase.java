@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ATTestCase {
 
+    public String name;
     public String baseUrl;
     public String contextType = null;
     public List<ATRequest> requests = null;
@@ -30,5 +31,13 @@ public class ATTestCase {
 
     public void setRequests(List<ATRequest> requests) {
         this.requests = requests;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

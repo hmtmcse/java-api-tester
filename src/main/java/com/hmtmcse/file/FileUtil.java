@@ -70,7 +70,7 @@ public class FileUtil {
                     print(fileInfo.subDirectories, space + "-");
                 }
             }else{
-                System.out.println(line + " Type: File");
+                System.out.println(line + " Type: File. Extension: " + fileInfo.getFileExtension());
             }
         }
     }
@@ -80,9 +80,21 @@ public class FileUtil {
         fileInfo.setName(file.getName());
         fileInfo.setDirectory(file.isDirectory());
         fileInfo.setAbsolutePath(file.getAbsolutePath());
-        fileInfo.setFile(file.isFile());
+        if (file.isFile()){
+            fileInfo.setFile(file.isFile());
+            fileInfo.setFileExtension(getFileExtension(file.getName()));
+        }
+
         fileInfo.setLastModified(file.lastModified());
         return fileInfo;
+    }
+
+    public static String getFileExtension(String fileName) {
+        if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0){
+            return fileName.substring(fileName.lastIndexOf(".")+1);
+        }else{
+            return "";
+        }
     }
 
 }
