@@ -136,6 +136,7 @@ public class HttpTool extends HttpRequest {
         return this;
     }
 
+
     public HttpTool jsonDelete(String url, String jsonString) {
         contextType = APPLICATION_JSON;
         httpMethod = DELETE_POST;
@@ -143,6 +144,7 @@ public class HttpTool extends HttpRequest {
         this.url = url;
         return this;
     }
+
 
     public HttpTool deletePost(String url) {
         httpMethod = DELETE_POST;
