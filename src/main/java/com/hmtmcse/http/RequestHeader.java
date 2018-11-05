@@ -5,6 +5,14 @@ public class RequestHeader {
     protected String key;
     protected String value;
 
+
+    public RequestHeader() {}
+
+    public RequestHeader(String key, String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     public String getKey() {
         return key;
     }

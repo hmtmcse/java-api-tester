@@ -110,6 +110,9 @@ public class HttpRequest {
         this.filePath = filePath;
     }
 
+
+
+
     public String toURL(String myUrl){
         try {
             String decodedURL = URLDecoder.decode(myUrl, "UTF-8");
@@ -120,6 +123,7 @@ public class HttpRequest {
             return myUrl;
         }
     }
+
 
     public String urlEncode(String value){
         try {

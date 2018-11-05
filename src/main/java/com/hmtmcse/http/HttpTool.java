@@ -51,11 +51,14 @@ public class HttpTool extends HttpRequest {
     }
 
 
+
     public HttpTool post(String url) {
         httpMethod = POST;
         this.url = url;
         return this;
     }
+
+
 
     public HttpTool jsonPost(String url, String jsonString) {
         contextType = APPLICATION_JSON;
@@ -79,6 +82,11 @@ public class HttpTool extends HttpRequest {
 
     public HttpTool get(String url) {
         this.url = url;
+        return this;
+    }
+
+    public HttpTool addHeader(String key, String value) {
+        this.headers.add(new RequestHeader(key, value));
         return this;
     }
 
@@ -112,6 +120,8 @@ public class HttpTool extends HttpRequest {
         }
         return httpManager.requestTo(this);
     }
+
+
 
     public static HttpTool instance() {
         return new HttpTool();
