@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class ATRequest {
 
     public String url;
+    public String name;
     public String contextType = null;
     public String method;
     public JsonNode params;
@@ -49,5 +50,13 @@ public class ATRequest {
 
     public void setParams(JsonNode params) {
         this.params = params;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

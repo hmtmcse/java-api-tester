@@ -3,6 +3,7 @@
   "contextType": "application/json",
   "requests": [
     {
+      "name": "Create Touhid",
       "url": "/api/v2/product/create",
       "method": "post",
       "contextType": "application/json",
