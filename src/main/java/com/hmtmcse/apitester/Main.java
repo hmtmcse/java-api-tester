@@ -12,9 +12,7 @@ public class Main {
         try {
             HMTMConfigHolder.isDebug = true;
             HttpResponse httpResponse = HttpTool.instance()
-                    .get("http://localhost:8080/api/v2/user/list?touhid=xyz mia&xyz=abc")
-                    .addParam("oi", "touhid vai")
-                    .addHeader("abul", "babul")
+                    .download("http://localhost/portal.zip", "C:\\Users\\touhid\\Desktop\\template\\download")
                     .send();
             HMTMUtil.print(httpResponse.getContent());
         } catch (HttpExceptionHandler httpExceptionHandler) {

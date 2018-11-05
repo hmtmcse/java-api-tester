@@ -7,6 +7,11 @@ import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.nio.file.Paths;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 public class HttpManager {
@@ -107,12 +112,13 @@ public class HttpManager {
                     httpResponse.content = streamToText(httpURLConnection.getInputStream());
                 }else if (httpRequest.isDownload && httpRequest.filePath != null){
                    if (httpRequest.fileName == null){
+                       httpRequest.fileName = httpRequest.defaultDownloadFileName;
                        String fileName = httpURLConnection.getHeaderField("Content-Disposition");
-                       int index = fileName.indexOf("filename=");
-                       if (index > 0) {
-                           httpRequest.fileName = fileName.substring(index + 10, fileName.length() - 1);
-                       }else{
-                           httpRequest.fileName = "download.dat";
+                       if(fileName != null){
+                           int index = fileName.indexOf("filename=");
+                           if (index > 0) {
+                               httpRequest.fileName = fileName.substring(index + 10, fileName.length() - 1);
+                           }
                        }
                    }
                    streamToFile(HMTMUtil.concatLocation(httpRequest.filePath, httpRequest.fileName), httpRequest.fileBufferSize, httpURLConnection.getInputStream());
@@ -131,4 +137,17 @@ public class HttpManager {
         }
         return httpResponse;
     }
+
+
+    public Map<String, Object> getAllHeaders(HttpURLConnection httpURLConnection) {
+        Map<String, List<String>> headerFields = httpURLConnection.getHeaderFields();
+        Set<String> headerKeys = headerFields.keySet();
+        LinkedHashMap<String, Object> headers = new LinkedHashMap<>();
+        for (String key : headerKeys) {
+            headers.put(key, headerFields.get(key));
+        }
+        return headers;
+    }
+
+
 }

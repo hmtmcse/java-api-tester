@@ -27,6 +27,7 @@ public class HttpRequest {
     protected Boolean isEnableRedirectHandle = false;
     protected Boolean isDownload = false;
     protected String fileName;
+    protected String defaultDownloadFileName = "download.dat";
     protected String filePath;
 
     public Integer getConnectionTimeout() {
@@ -131,5 +132,13 @@ public class HttpRequest {
         } catch (UnsupportedEncodingException e) {
             return value;
         }
+    }
+
+    public String getDefaultDownloadFileName() {
+        return defaultDownloadFileName;
+    }
+
+    public void setDefaultDownloadFileName(String defaultDownloadFileName) {
+        this.defaultDownloadFileName = defaultDownloadFileName;
     }
 }
