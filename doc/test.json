@@ -1,3 +1,17 @@
 {
-
+  "baseUrl": "http://hmtmcse.com",
+  "contextType": "application/json",
+  "requests": [
+    {
+      "url": "/api/v2/product/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": "application/json",
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": ""
+      }
+    }
+  ]
 }
