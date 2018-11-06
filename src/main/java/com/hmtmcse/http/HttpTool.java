@@ -18,6 +18,13 @@ public class HttpTool extends HttpRequest {
         return this;
     }
 
+
+    public HttpTool addParams(LinkedHashMap<String, Object> map) {
+        paramMap = map;
+        return this;
+    }
+
+
     private String getRequestUrlWithParams(){
         if (this.url != null && this.params != null){
             try {
