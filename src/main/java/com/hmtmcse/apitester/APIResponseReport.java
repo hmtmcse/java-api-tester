@@ -8,6 +8,8 @@ public class APIResponseReport extends ATResponse {
     public String name;
     public String url;
     public String method;
+    public String response;
+    public String requestContextType;
 
     public Boolean getSuccess() {
         return isSuccess;
@@ -49,4 +51,19 @@ public class APIResponseReport extends ATResponse {
         this.contextType = contextType;
     }
 
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public String getRequestContextType() {
+        return requestContextType;
+    }
+
+    public void setRequestContextType(String requestContextType) {
+        this.requestContextType = requestContextType;
+    }
 }

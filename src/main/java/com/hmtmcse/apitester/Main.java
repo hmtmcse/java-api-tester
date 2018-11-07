@@ -12,6 +12,13 @@ public class Main {
 
     public static void main(String[] args) {
 
+        HMTMConfigHolder.isDebug = true;
+
+        ATCasesProcessor atCasesProcessor = new ATCasesProcessor();
+        atCasesProcessor.run("test-data");
+        System.exit(0);
+
+
         try {
             FileUtil.print(FileUtil.listAll("C:\\Users\\hmtmc\\OneDrive\\Desktop\\templates\\files"));
         } catch (FileExceptionHandler fileExceptionHandler) {

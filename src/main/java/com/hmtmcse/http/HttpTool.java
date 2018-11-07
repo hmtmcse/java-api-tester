@@ -66,6 +66,10 @@ public class HttpTool extends HttpRequest {
         return this;
     }
 
+    public HttpTool requestTo(String url) {
+        this.url = url;
+        return this;
+    }
 
 
     public HttpTool jsonPost(String url, String jsonString) {
@@ -170,6 +174,13 @@ public class HttpTool extends HttpRequest {
         return httpManager.requestTo(this);
     }
 
+    public static String urlConcat(String first, String second){
+        if (!first.endsWith("/") && !second.startsWith("/")){
+            return first + "/" + second;
+        }else{
+            return first + second;
+        }
+    }
 
 
     public static HttpTool instance() {

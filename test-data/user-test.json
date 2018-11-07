@@ -1,0 +1,44 @@
+{
+  "baseUrl": "http://localhost:8080",
+  "contextType": "application/json",
+  "name": "User End Point Testing",
+  "requests": [
+    {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
+      "name": "Create User Missing Password",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    }
+  ]
+}
