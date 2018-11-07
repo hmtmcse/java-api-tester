@@ -12,7 +12,6 @@ import com.hmtmcse.http.HttpExceptionHandler;
 import com.hmtmcse.http.HttpRequest;
 import com.hmtmcse.http.HttpResponse;
 import com.hmtmcse.http.HttpTool;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -39,7 +38,6 @@ public class ATCasesProcessor {
                     apiResponseReport.response = atExceptionHandler.getMessage();
                 }
                 System.out.println("Success: " + apiResponseReport.isSuccess + " Name:" + apiResponseReport.name);
-
             }
         }
     }

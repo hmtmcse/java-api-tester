@@ -2,11 +2,14 @@ package com.hmtmcse.apitester.json;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class ATResponse {
+public class ATResponse extends ATResponseAssertion {
 
     public Integer httpCode;
     public String contextType = null;
     public JsonNode content;
+    public ATResponseAssertion and;
+    public ATResponseAssertion or;
+
 
     public Integer getHttpCode() {
         return httpCode;
@@ -30,5 +33,21 @@ public class ATResponse {
 
     public void setContent(JsonNode content) {
         this.content = content;
+    }
+
+    public ATResponseAssertion getAnd() {
+        return and;
+    }
+
+    public void setAnd(ATResponseAssertion and) {
+        this.and = and;
+    }
+
+    public ATResponseAssertion getOr() {
+        return or;
+    }
+
+    public void setOr(ATResponseAssertion or) {
+        this.or = or;
     }
 }
