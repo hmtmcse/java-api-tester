@@ -23,6 +23,158 @@
       }
     },
     {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "url": "/api/v2/user/create",
+      "method": "post",
+      "contextType": "application/json",
+      "params": {
+        "name": "Touhid Mia",
+        "email": "touhid@bitmascot.com",
+        "password": "123456"
+      },
+      "response": {
+        "contextType": "application/json",
+        "httpCode": 200,
+        "content": {
+          "isSuccess": true,
+          "message": "Operation Success"
+        }
+      }
+    },
+    {
       "name": "Create User Missing Password",
       "url": "/api/v2/user/create",
       "method": "post",
