@@ -15,7 +15,10 @@
       "response": {
         "contextType": "application/json",
         "httpCode": 200,
-        "content": ""
+        "content": {
+          "isDeleted": true,
+          "isActive": true
+        }
       }
     }
   ]

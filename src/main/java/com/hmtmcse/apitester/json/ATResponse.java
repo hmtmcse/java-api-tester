@@ -8,7 +8,6 @@ public class ATResponse extends ATResponseAssertion {
     public String contextType = null;
     public JsonNode content;
     public ATResponseAssertion and;
-    public ATResponseAssertion or;
 
 
     public Integer getHttpCode() {
@@ -43,11 +42,4 @@ public class ATResponse extends ATResponseAssertion {
         this.and = and;
     }
 
-    public ATResponseAssertion getOr() {
-        return or;
-    }
-
-    public void setOr(ATResponseAssertion or) {
-        this.or = or;
-    }
 }

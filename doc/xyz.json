@@ -1,0 +1,18 @@
+{
+  "response": {
+    "contextType": "application/json",
+    "and":{
+      "equal": {
+        "isActive": true
+      },
+      "notEqual": {
+        "isDeleted": true
+      },
+    },
+    "httpCode": 200,
+    "content": {
+      "isDeleted": true,
+      "isActive": true
+    }
+  }
+}
