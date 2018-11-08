@@ -2,16 +2,18 @@ package com.hmtmcse.apitester;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hmtmcse.apitester.json.ATRequest;
-import com.hmtmcse.apitester.json.ATResponse;
-import com.hmtmcse.apitester.json.ATTestCase;
-import com.hmtmcse.apitester.json.ATTestCases;
+import com.hmtmcse.apitester.json.*;
 import com.hmtmcse.common.ATExceptionHandler;
 import com.hmtmcse.common.HMTMUtil;
 import com.hmtmcse.http.HttpExceptionHandler;
 import com.hmtmcse.http.HttpRequest;
 import com.hmtmcse.http.HttpResponse;
 import com.hmtmcse.http.HttpTool;
+import com.hmtmcse.stringhelper.SHException;
+import com.hmtmcse.stringhelper.SHjson;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -99,6 +101,9 @@ public class ATCasesProcessor {
                 apiResponseReport.isSuccess = true;
             }
 
+
+
+
             String atResponseContent = null;
             if (atResponse.content != null){
                 atResponseContent = atResponse.content.toString();
@@ -112,6 +117,35 @@ public class ATCasesProcessor {
             }
         }
         return apiResponseReport;
+    }
+
+
+    private Boolean responseAssertionCheck(ATResponse atResponse, String httpResponse) throws ATExceptionHandler {
+        try {
+
+
+
+            Object object = SHjson.parseJSONFromString(httpResponse);
+            JSONObject jsonObject;
+            switch (SHjson.isArrayOrObject(object)) {
+                case SHjson.ARRAY:
+                    JSONArray jsonArray = (JSONArray) object;
+                    if (jsonArray.size() == 0){
+                        jsonObject = null;
+                    }else {
+                        jsonObject = (JSONObject) jsonArray.get(0);
+                    }
+                    break;
+                case SHjson.OBJECT:
+                     jsonObject = (JSONObject) object;
+                    break;
+                default:
+                    return false;
+            }
+        } catch (SHException e) {
+            throw new ATExceptionHandler(e.getMessage());
+        }
+        return false;
     }
 
 

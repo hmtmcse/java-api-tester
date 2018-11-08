@@ -25,7 +25,6 @@ work.
 
 
 <br>
-
 **AND Example**
 ``` 
   "response": {

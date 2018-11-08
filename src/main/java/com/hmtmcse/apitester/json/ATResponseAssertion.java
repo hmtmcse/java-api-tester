@@ -6,58 +6,58 @@ import java.util.LinkedHashMap;
 public class ATResponseAssertion {
 
 
-    public LinkedHashMap<Object, Object> equal;
-    public LinkedHashMap<Object, Object> notEqual;
-    public LinkedHashMap<Object, Object> lessThan;
-    public LinkedHashMap<Object, Object> lessThanEqual;
-    public LinkedHashMap<Object, Object> greaterThan;
-    public LinkedHashMap<Object, Object> greaterThanEqual;
+    public LinkedHashMap<String, Object> equal;
+    public LinkedHashMap<String, Object> notEqual;
+    public LinkedHashMap<String, Object> lessThan;
+    public LinkedHashMap<String, Object> lessThanEqual;
+    public LinkedHashMap<String, Object> greaterThan;
+    public LinkedHashMap<String, Object> greaterThanEqual;
 
-    public LinkedHashMap<Object, Object> getEqual() {
+    public LinkedHashMap<String, Object> getEqual() {
         return equal;
     }
 
-    public void setEqual(LinkedHashMap<Object, Object> equal) {
+    public void setEqual(LinkedHashMap<String, Object> equal) {
         this.equal = equal;
     }
 
-    public LinkedHashMap<Object, Object> getNotEqual() {
+    public LinkedHashMap<String, Object> getNotEqual() {
         return notEqual;
     }
 
-    public void setNotEqual(LinkedHashMap<Object, Object> notEqual) {
+    public void setNotEqual(LinkedHashMap<String, Object> notEqual) {
         this.notEqual = notEqual;
     }
 
-    public LinkedHashMap<Object, Object> getLessThan() {
+    public LinkedHashMap<String, Object> getLessThan() {
         return lessThan;
     }
 
-    public void setLessThan(LinkedHashMap<Object, Object> lessThan) {
+    public void setLessThan(LinkedHashMap<String, Object> lessThan) {
         this.lessThan = lessThan;
     }
 
-    public LinkedHashMap<Object, Object> getLessThanEqual() {
+    public LinkedHashMap<String, Object> getLessThanEqual() {
         return lessThanEqual;
     }
 
-    public void setLessThanEqual(LinkedHashMap<Object, Object> lessThanEqual) {
+    public void setLessThanEqual(LinkedHashMap<String, Object> lessThanEqual) {
         this.lessThanEqual = lessThanEqual;
     }
 
-    public LinkedHashMap<Object, Object> getGreaterThan() {
+    public LinkedHashMap<String, Object> getGreaterThan() {
         return greaterThan;
     }
 
-    public void setGreaterThan(LinkedHashMap<Object, Object> greaterThan) {
+    public void setGreaterThan(LinkedHashMap<String, Object> greaterThan) {
         this.greaterThan = greaterThan;
     }
 
-    public LinkedHashMap<Object, Object> getGreaterThanEqual() {
+    public LinkedHashMap<String, Object> getGreaterThanEqual() {
         return greaterThanEqual;
     }
 
-    public void setGreaterThanEqual(LinkedHashMap<Object, Object> greaterThanEqual) {
+    public void setGreaterThanEqual(LinkedHashMap<String, Object> greaterThanEqual) {
         this.greaterThanEqual = greaterThanEqual;
     }
 }
