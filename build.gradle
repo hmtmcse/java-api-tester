@@ -8,10 +8,16 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+
+    maven { url "https://raw.github.com/hmtmcse/maven-repository/master" }
     mavenCentral()
+    
 }
+
+
 
 dependencies {
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
+    compile group: 'com.hmtmcse.console', name: 'table', version: '1.0'
 }
