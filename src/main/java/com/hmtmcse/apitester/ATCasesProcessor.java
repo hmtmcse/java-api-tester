@@ -120,7 +120,26 @@ public class ATCasesProcessor {
     }
 
 
-    private Boolean responseAssertionCheck(ATResponse atResponse, String httpResponse) throws ATExceptionHandler {
+    private Boolean assertionResolver(ATResponseAssertion atResponseAssertion, JSONObject jsonObject, Boolean isAnd){
+        Boolean orCondition = false;
+        Boolean andCondition = false;
+
+        LinkedHashMap<String, Object> condition;
+        if (atResponseAssertion.equal != null){
+            condition = atResponseAssertion.equal;
+            Object object = new Object();
+
+        }
+        if (atResponseAssertion.notEqual != null){}
+        if (atResponseAssertion.lessThan != null){}
+        if (atResponseAssertion.lessThanEqual != null){}
+        if (atResponseAssertion.greaterThan != null){}
+        if (atResponseAssertion.greaterThanEqual != null){}
+
+        return isAnd ? andCondition : orCondition;
+    }
+
+    private Boolean responseAssertionCheck(ATJsonAssertion atJsonAssertion, String httpResponse) throws ATExceptionHandler {
         try {
 
 

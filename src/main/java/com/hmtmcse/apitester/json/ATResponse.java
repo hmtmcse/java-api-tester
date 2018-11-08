@@ -7,7 +7,7 @@ public class ATResponse {
     public Integer httpCode;
     public String contextType = null;
     public JsonNode content;
-    public ATjsonAssertion jsonAssertion;
+    public ATJsonAssertion jsonAssertion;
 
 
     public Integer getHttpCode() {
@@ -34,11 +34,11 @@ public class ATResponse {
         this.content = content;
     }
 
-    public ATjsonAssertion getJsonAssertion() {
+    public ATJsonAssertion getJsonAssertion() {
         return jsonAssertion;
     }
 
-    public void setJsonAssertion(ATjsonAssertion jsonAssertion) {
+    public void setJsonAssertion(ATJsonAssertion jsonAssertion) {
         this.jsonAssertion = jsonAssertion;
     }
 }
