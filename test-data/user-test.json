@@ -5,21 +5,17 @@
   "requests": [
     {
       "name": "Create User",
-      "url": "/api/v2/user/create",
-      "method": "post",
-      "contextType": "application/json",
-      "params": {
-        "name": "Touhid Mia",
-        "email": "touhid@bitmascot.com",
-        "password": "123456"
-      },
+      "url": "/api/v2/user/list",
+      "method": "get",
       "response": {
         "contextType": "application/json",
-        "equal": {
-          "isSuccess": true
-        },
-        "notEqual": {
-          "message": "Syz"
+        "jsonAssertion":{
+          "equal": {
+            "isSuccess": true
+          },
+          "greaterThanEqual": {
+            "total": 19
+          }
         },
         "httpCode": 200,
         "content": {

@@ -18,6 +18,7 @@ public class SHjson {
     public static Object parseJSONFromString(String content) throws SHException {
         try {
             JSONParser jsonParser = new JSONParser();
+            org.json.JSONObject tomJsonObject = new org.json.JSONObject(content);
             return jsonParser.parse(content);
         } catch (ParseException e) {
             throw new SHException(e.getMessage());
@@ -58,4 +59,7 @@ public class SHjson {
             System.out.println("Invalid SHjson Array");
         }
     }
+
+
+
 }

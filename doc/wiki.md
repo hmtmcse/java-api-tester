@@ -56,4 +56,5 @@ work.
 * lessThan
 * lessThanEqual
 * greaterThan
+* greaterThanEqual
 * and

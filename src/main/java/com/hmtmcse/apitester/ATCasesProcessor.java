@@ -105,11 +105,23 @@ public class ATCasesProcessor {
                 atResponseContent = atResponse.content.toString();
             }
 
-            if (httpResponse.getContent().equals(atResponseContent)){
-                apiResponseReport.response = atResponseContent;
+            if (atResponse.jsonAssertion != null){
+                try {
+                    apiResponseReport.isSuccess = responseAssertionCheck(atResponse.jsonAssertion, httpResponse.getContent());
+                    if (!apiResponseReport.isSuccess){
+                        apiResponseReport.response = httpResponse.getContent();
+                    }
+                } catch (ATExceptionHandler e) {
+                    apiResponseReport.isSuccess = false;
+                    apiResponseReport.response = e.getMessage();
+                }
             }else{
-                apiResponseReport.isSuccess = false;
-                apiResponseReport.response = atResponseContent;
+                if (httpResponse.getContent().equals(atResponseContent)){
+                    apiResponseReport.response = atResponseContent;
+                }else{
+                    apiResponseReport.isSuccess = false;
+                    apiResponseReport.response = atResponseContent;
+                }
             }
         }
         return apiResponseReport;
