@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hmtmcse.apitester.json.*;
 import com.hmtmcse.common.ATExceptionHandler;
 import com.hmtmcse.hmutil.HMUtil;
-import com.hmtmcse.hmutil.MapKeyValue;
 import com.hmtmcse.http.HttpExceptionHandler;
 import com.hmtmcse.http.HttpRequest;
 import com.hmtmcse.http.HttpResponse;
@@ -14,7 +13,6 @@ import com.hmtmcse.stringhelper.SHException;
 import com.hmtmcse.stringhelper.SHjson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -102,9 +100,6 @@ public class ATCasesProcessor {
                 apiResponseReport.isSuccess = true;
             }
 
-
-
-
             String atResponseContent = null;
             if (atResponse.content != null){
                 atResponseContent = atResponse.content.toString();
@@ -121,66 +116,111 @@ public class ATCasesProcessor {
     }
 
 
-    private MapKeyValue jsonObjectToKeyValue(JSONObject jsonObject, String key){
-        MapKeyValue mapKeyValue = new MapKeyValue();
-       try {
-           mapKeyValue.value = jsonObject.get(key);
-           mapKeyValue.key = key;
-           return mapKeyValue;
-       }catch (Exception e){
-           return null;
-       }
-    }
-
-
-    private Boolean assertionResolver(ATResponseAssertion atResponseAssertion, JSONObject jsonObject, Boolean isAnd){
+    private Boolean assertionResolver(ATResponseAssertion atResponseAssertion, JSONObject jsonObject, Boolean isAnd) {
         Boolean orCondition = false;
         Boolean andCondition = false;
         ATAssertionData atAssertionData;
 
-
         if (atResponseAssertion.equal != null) {
             atAssertionData = ATAssertionData.instance().process(atResponseAssertion.equal, jsonObject);
-            if (atAssertionData == null){
+            if (atAssertionData == null) {
                 orCondition = false;
                 andCondition = false;
-            }else{
-                if (atAssertionData.assertionHelper.isEqual(atAssertionData.assertionHelper.userDefineValue, atAssertionData.assertionHelper.apiResponseValue)){
+            } else {
+                if (atAssertionData.assertionHelper.isEqual()) {
                     orCondition = true;
                     andCondition = true;
-                }else{
+                } else {
                     andCondition = false;
                 }
             }
         }
 
-        if (atResponseAssertion.notEqual != null){
+
+        if (atResponseAssertion.notEqual != null) {
             atAssertionData = ATAssertionData.instance().process(atResponseAssertion.notEqual, jsonObject);
-            if (atAssertionData == null){
+            if (atAssertionData == null) {
                 orCondition = false;
                 andCondition = false;
-            }else{
-//                if (atAssertionData.assertionHelper.notEqual(atAssertionData.userDefineKeyValue.value, atAssertionData.apiResponseKeyValue.value)){
-//                    orCondition = true;
-//                    andCondition = true;
-//                }else{
-//                    andCondition = false;
-//                }
+            } else {
+                if (atAssertionData.assertionHelper.notEqual()) {
+                    orCondition = true;
+                    andCondition = true;
+                } else {
+                    andCondition = false;
+                }
             }
         }
-        if (atResponseAssertion.lessThan != null){}
-        if (atResponseAssertion.lessThanEqual != null){}
-        if (atResponseAssertion.greaterThan != null){}
-        if (atResponseAssertion.greaterThanEqual != null){}
 
+
+        if (atResponseAssertion.lessThan != null) {
+            atAssertionData = ATAssertionData.instance().process(atResponseAssertion.lessThan, jsonObject);
+            if (atAssertionData == null) {
+                orCondition = false;
+                andCondition = false;
+            } else {
+                if (atAssertionData.assertionHelper.lessThan()) {
+                    orCondition = true;
+                    andCondition = true;
+                } else {
+                    andCondition = false;
+                }
+            }
+        }
+
+
+        if (atResponseAssertion.lessThanEqual != null) {
+            atAssertionData = ATAssertionData.instance().process(atResponseAssertion.lessThanEqual, jsonObject);
+            if (atAssertionData == null) {
+                orCondition = false;
+                andCondition = false;
+            } else {
+                if (atAssertionData.assertionHelper.lessThanEqual()) {
+                    orCondition = true;
+                    andCondition = true;
+                } else {
+                    andCondition = false;
+                }
+            }
+        }
+
+
+        if (atResponseAssertion.greaterThan != null) {
+            atAssertionData = ATAssertionData.instance().process(atResponseAssertion.greaterThan, jsonObject);
+            if (atAssertionData == null) {
+                orCondition = false;
+                andCondition = false;
+            } else {
+                if (atAssertionData.assertionHelper.greaterThan()) {
+                    orCondition = true;
+                    andCondition = true;
+                } else {
+                    andCondition = false;
+                }
+            }
+        }
+
+
+        if (atResponseAssertion.greaterThanEqual != null) {
+            atAssertionData = ATAssertionData.instance().process(atResponseAssertion.greaterThanEqual, jsonObject);
+            if (atAssertionData == null) {
+                orCondition = false;
+                andCondition = false;
+            } else {
+                if (atAssertionData.assertionHelper.greaterThanEqual()) {
+                    orCondition = true;
+                    andCondition = true;
+                } else {
+                    andCondition = false;
+                }
+            }
+        }
         return isAnd ? andCondition : orCondition;
     }
 
+
     private Boolean responseAssertionCheck(ATJsonAssertion atJsonAssertion, String httpResponse) throws ATExceptionHandler {
         try {
-
-
-
             Object object = SHjson.parseJSONFromString(httpResponse);
             JSONObject jsonObject;
             switch (SHjson.isArrayOrObject(object)) {
@@ -198,10 +238,16 @@ public class ATCasesProcessor {
                 default:
                     return false;
             }
+
+            if (atJsonAssertion.and != null){
+                return assertionResolver(atJsonAssertion.and, jsonObject, true);
+            }else {
+                return assertionResolver(atJsonAssertion, jsonObject, false);
+            }
+
         } catch (SHException e) {
             throw new ATExceptionHandler(e.getMessage());
         }
-        return false;
     }
 
 

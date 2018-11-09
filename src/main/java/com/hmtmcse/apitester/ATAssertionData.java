@@ -11,7 +11,6 @@ public class ATAssertionData {
     public AssertionHelper assertionHelper;
     public MapKeyValue userDefineKeyValue;
     public MapKeyValue apiResponseKeyValue;
-    public ATAssertionValue atAssertionValue;
 
 
     private MapKeyValue jsonObjectToKeyValue(JSONObject jsonObject, String key){
@@ -45,22 +44,16 @@ public class ATAssertionData {
 
         if (userDefineKeyValue.value instanceof String){
             assertionHelper = new AssertionHelper<String>();
-            atAssertionValue = new ATAssertionValue<String>();
         }else if (userDefineKeyValue.value instanceof Float){
             assertionHelper = new AssertionHelper<Float>();
-            atAssertionValue = new ATAssertionValue<Float>();
         }else if (userDefineKeyValue.value instanceof Integer){
             assertionHelper = new AssertionHelper<Integer>();
-            atAssertionValue = new ATAssertionValue<Integer>();
         }else if (userDefineKeyValue.value instanceof Boolean){
             assertionHelper = new AssertionHelper<Boolean>();
-            atAssertionValue = new ATAssertionValue<Boolean>();
         }else if (userDefineKeyValue.value instanceof Double){
             assertionHelper = new AssertionHelper<Double>();
-            atAssertionValue = new ATAssertionValue<Double>();
         }else if (userDefineKeyValue.value instanceof Long){
             assertionHelper = new AssertionHelper<Long>();
-            atAssertionValue = new ATAssertionValue<Long>();
         }else{
             return null;
         }
