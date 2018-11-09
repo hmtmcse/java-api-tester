@@ -4,7 +4,7 @@
   "name": "User End Point Testing",
   "requests": [
     {
-      "name": "Create User",
+      "name": "List All User",
       "url": "/api/v2/user/list",
       "method": "get",
       "response": {
@@ -14,7 +14,15 @@
             "isSuccess": true
           },
           "greaterThanEqual": {
-            "total": 19
+            "total": 0
+          },
+          "and":{
+            "equal": {
+              "isSuccess": true
+            },
+            "greaterThanEqual": {
+              "total": 0
+            }
           }
         },
         "httpCode": 200,

@@ -1,6 +1,6 @@
 package com.hmtmcse.http;
 
-import com.hmtmcse.hmutil.HMUtil;
+import com.hmtmcse.tmutil.TMUtil;
 
 import java.io.*;
 import java.net.ConnectException;
@@ -120,7 +120,7 @@ public class HttpManager {
                            }
                        }
                    }
-                   streamToFile(HMUtil.concatLocation(httpRequest.filePath, httpRequest.fileName), httpRequest.fileBufferSize, httpURLConnection.getInputStream());
+                   streamToFile(TMUtil.concatLocation(httpRequest.filePath, httpRequest.fileName), httpRequest.fileBufferSize, httpURLConnection.getInputStream());
                 }
             }else {
                 httpResponse.content = streamToText(httpURLConnection.getErrorStream());

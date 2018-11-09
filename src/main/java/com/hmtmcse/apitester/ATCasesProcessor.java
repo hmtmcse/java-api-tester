@@ -4,15 +4,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hmtmcse.apitester.json.*;
 import com.hmtmcse.common.ATExceptionHandler;
-import com.hmtmcse.hmutil.HMUtil;
+import com.hmtmcse.tmhelper.TMJson;
+import com.hmtmcse.tmutil.TMUtil;
 import com.hmtmcse.http.HttpExceptionHandler;
 import com.hmtmcse.http.HttpRequest;
 import com.hmtmcse.http.HttpResponse;
 import com.hmtmcse.http.HttpTool;
-import com.hmtmcse.stringhelper.SHException;
-import com.hmtmcse.stringhelper.SHjson;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -232,34 +231,30 @@ public class ATCasesProcessor {
 
 
     private Boolean responseAssertionCheck(ATJsonAssertion atJsonAssertion, String httpResponse) throws ATExceptionHandler {
-        try {
-            Object object = SHjson.parseJSONFromString(httpResponse);
-            JSONObject jsonObject;
-            switch (SHjson.isArrayOrObject(object)) {
-                case SHjson.ARRAY:
-                    JSONArray jsonArray = (JSONArray) object;
-                    if (jsonArray.size() == 0){
-                        jsonObject = null;
-                    }else {
-                        jsonObject = (JSONObject) jsonArray.get(0);
-                    }
-                    break;
-                case SHjson.OBJECT:
-                     jsonObject = (JSONObject) object;
-                    break;
-                default:
-                    return false;
-            }
-
-            if (atJsonAssertion.and != null){
-                return assertionResolver(atJsonAssertion.and, jsonObject, true);
-            }else {
-                return assertionResolver(atJsonAssertion, jsonObject, false);
-            }
-
-        } catch (SHException e) {
-            throw new ATExceptionHandler(e.getMessage());
+        Object object = TMJson.parseJSONFromString(httpResponse);
+        JSONObject jsonObject;
+        switch (TMJson.isArrayOrObject(object)) {
+            case TMJson.ARRAY:
+                JSONArray jsonArray = (JSONArray) object;
+                if (jsonArray.length() == 0){
+                    jsonObject = null;
+                }else {
+                    jsonObject = (JSONObject) jsonArray.get(0);
+                }
+                break;
+            case TMJson.OBJECT:
+                 jsonObject = (JSONObject) object;
+                break;
+            default:
+                return false;
         }
+
+        if (atJsonAssertion.and != null){
+            return assertionResolver(atJsonAssertion.and, jsonObject, true);
+        }else {
+            return assertionResolver(atJsonAssertion, jsonObject, false);
+        }
+
     }
 
 
@@ -306,7 +301,7 @@ public class ATCasesProcessor {
             LinkedHashMap<String, Object> map = mapper.convertValue(params, LinkedHashMap.class);
             return map;
         }catch (Exception e){
-            HMUtil.print(e.getMessage());
+            TMUtil.print(e.getMessage());
             return null;
         }
     }

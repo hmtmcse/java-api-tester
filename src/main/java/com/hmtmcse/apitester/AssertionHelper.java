@@ -6,7 +6,7 @@ public class AssertionHelper<T extends Comparable<T>> {
     public T apiResponseValue;
 
     public Boolean isEqual(){
-        int compare = userDefineValue.compareTo(apiResponseValue);
+        int compare = apiResponseValue.compareTo(userDefineValue);
         if (compare == 0){
             return true;
         }else {
@@ -16,7 +16,7 @@ public class AssertionHelper<T extends Comparable<T>> {
 
 
     public Boolean notEqual(){
-        int compare = userDefineValue.compareTo(apiResponseValue);
+        int compare = apiResponseValue.compareTo(userDefineValue);
         if (compare == 0){
             return false;
         }else {
@@ -26,7 +26,7 @@ public class AssertionHelper<T extends Comparable<T>> {
 
 
     public Boolean lessThan(){
-        int compare = userDefineValue.compareTo(apiResponseValue);
+        int compare = apiResponseValue.compareTo(userDefineValue);
         if (compare < 0){
             return true;
         }else {
@@ -35,7 +35,7 @@ public class AssertionHelper<T extends Comparable<T>> {
     }
 
     public Boolean lessThanEqual(){
-        int compare = userDefineValue.compareTo(apiResponseValue);
+        int compare = apiResponseValue.compareTo(userDefineValue);
         if (compare == 0) {
             return true;
         }else if (compare < 0){
@@ -46,7 +46,7 @@ public class AssertionHelper<T extends Comparable<T>> {
     }
 
     public Boolean greaterThan(){
-        int compare = userDefineValue.compareTo(apiResponseValue);
+        int compare = apiResponseValue.compareTo(userDefineValue);
         if (compare > 0){
             return true;
         }else {
@@ -55,7 +55,7 @@ public class AssertionHelper<T extends Comparable<T>> {
     }
 
     public Boolean greaterThanEqual(){
-        int compare = userDefineValue.compareTo(apiResponseValue);
+        int compare = apiResponseValue.compareTo(userDefineValue);
         if (compare == 0) {
             return true;
         }else if (compare > 0){

@@ -1,11 +1,11 @@
-package com.hmtmcse.hmutil;
+package com.hmtmcse.tmutil;
 
 import com.hmtmcse.common.HMTMConfigHolder;
 
 import java.io.File;
 import java.util.Map;
 
-public class HMUtil {
+public class TMUtil {
 
     public static void print(Object object){
         if (HMTMConfigHolder.isDebug){

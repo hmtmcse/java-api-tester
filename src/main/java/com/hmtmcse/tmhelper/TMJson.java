@@ -1,12 +1,11 @@
-package com.hmtmcse.stringhelper;
+package com.hmtmcse.tmhelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.List;
 
-public class HMJson {
+public class TMJson {
 
     public static final String ARRAY = "ARRAY";
     public static final String OBJECT = "OBJECT";
@@ -28,12 +27,14 @@ public class HMJson {
     }
 
 
-    public static HashMap getStringToJSONObject(String content) throws SHException {
+    public static HashMap getStringToJSONObject(String content){
         return (HashMap) parseJSONFromString(content);
     }
 
 
-    public static List getStringToJSONArray(String content) throws SHException {
+    public static List getStringToJSONArray(String content){
         return (List) parseJSONFromString(content);
     }
+
+
 }
