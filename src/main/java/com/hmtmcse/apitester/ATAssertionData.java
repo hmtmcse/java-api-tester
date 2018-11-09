@@ -40,8 +40,6 @@ public class ATAssertionData {
             return null;
         }
 
-
-
         if (userDefineKeyValue.value instanceof String){
             assertionHelper = new AssertionHelper<String>();
         }else if (userDefineKeyValue.value instanceof Float){

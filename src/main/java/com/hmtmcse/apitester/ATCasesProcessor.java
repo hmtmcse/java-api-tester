@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hmtmcse.apitester.json.*;
 import com.hmtmcse.common.ATExceptionHandler;
+import com.hmtmcse.console.table.data.Table;
+import com.hmtmcse.console.table.data.TableRowData;
 import com.hmtmcse.tmhelper.TMJson;
 import com.hmtmcse.tmutil.TMUtil;
 import com.hmtmcse.http.HttpExceptionHandler;
@@ -27,6 +29,8 @@ public class ATCasesProcessor {
         ATTestCases atTestCases = new ATTestCases();
         List<ATTestCase> cases = atTestCases.getTestCases(jsonDirectoryLocation);
         APIResponseReport apiResponseReport;
+        Table table = ATReport.start();
+        TableRowData rowData;
         for (ATTestCase atTestCase: cases){
             baseUrl = atTestCase.baseUrl;
             defaultContextType = atTestCase.contextType;
@@ -37,9 +41,16 @@ public class ATCasesProcessor {
                 } catch (ATExceptionHandler atExceptionHandler) {
                     apiResponseReport.response = atExceptionHandler.getMessage();
                 }
-                System.out.println("Success: " + apiResponseReport.isSuccess + " Name:" + apiResponseReport.name);
+                rowData = new TableRowData();
+                rowData = ATReport.isSuccess(apiResponseReport.isSuccess, rowData);
+                rowData.add(apiResponseReport.name);
+                rowData.add(apiResponseReport.url);
+                rowData.add(apiResponseReport.method);
+                rowData.add(apiResponseReport.requestContextType);
+                table.addRow(rowData);
             }
         }
+        table.toTablePrint();
     }
 
 
