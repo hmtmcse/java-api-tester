@@ -1,13 +1,12 @@
 package com.hmtmcse.http;
 
-import com.hmtmcse.common.HMTMUtil;
+import com.hmtmcse.hmutil.HMUtil;
 
 import java.io.*;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -121,7 +120,7 @@ public class HttpManager {
                            }
                        }
                    }
-                   streamToFile(HMTMUtil.concatLocation(httpRequest.filePath, httpRequest.fileName), httpRequest.fileBufferSize, httpURLConnection.getInputStream());
+                   streamToFile(HMUtil.concatLocation(httpRequest.filePath, httpRequest.fileName), httpRequest.fileBufferSize, httpURLConnection.getInputStream());
                 }
             }else {
                 httpResponse.content = streamToText(httpURLConnection.getErrorStream());

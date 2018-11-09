@@ -1,7 +1,7 @@
 package com.hmtmcse.apitester;
 
 import com.hmtmcse.common.HMTMConfigHolder;
-import com.hmtmcse.common.HMTMUtil;
+import com.hmtmcse.hmutil.HMUtil;
 import com.hmtmcse.file.FileExceptionHandler;
 import com.hmtmcse.file.FileUtil;
 import com.hmtmcse.http.HttpExceptionHandler;
@@ -32,7 +32,7 @@ public class Main {
             HttpResponse httpResponse = HttpTool.instance()
                     .download("http://localhost/portal.zip", "C:\\Users\\touhid\\Desktop\\template\\download")
                     .send();
-            HMTMUtil.print(httpResponse.getContent());
+            HMUtil.print(httpResponse.getContent());
         } catch (HttpExceptionHandler httpExceptionHandler) {
             System.out.println(httpExceptionHandler.getMessage());
         }

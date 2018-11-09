@@ -2,7 +2,7 @@ package com.hmtmcse.apitester.json;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hmtmcse.common.HMTMUtil;
+import com.hmtmcse.hmutil.HMUtil;
 import com.hmtmcse.file.FileExceptionHandler;
 import com.hmtmcse.file.FileInfo;
 import com.hmtmcse.file.FileUtil;
@@ -37,7 +37,7 @@ public class ATTestCases {
                                 cases.add(atTestCase);
                             }
                         } catch (IOException e) {
-                            HMTMUtil.print(e.getMessage());
+                            HMUtil.print(e.getMessage());
                         }
                     }
                 }
@@ -54,7 +54,7 @@ public class ATTestCases {
             List<FileInfo> fileInfo = FileUtil.listAllFile(directoryLocation);
             cases = processCase(fileInfo, cases);
         } catch (FileExceptionHandler e) {
-            HMTMUtil.print(e.getMessage());
+            HMUtil.print(e.getMessage());
         }
         return cases;
     }

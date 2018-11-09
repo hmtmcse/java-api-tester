@@ -2,19 +2,26 @@ package com.hmtmcse.apitester;
 
 public class AssertionHelper<T extends Comparable<T>> {
 
+    public T userDefineValue;
+    public T apiResponseValue;
+
     public Boolean isEqual(T first, T second){
-        if (first instanceof String){
-            return first.equals(second);
+        int compare = first.compareTo(second);
+        if (compare == 0){
+            return true;
+        }else {
+            return false;
         }
-        return (first == second);
     }
 
 
     public Boolean notEqual(T first, T second){
-        if (first instanceof String){
-            return !first.equals(second);
+        int compare = first.compareTo(second);
+        if (compare == 0){
+            return false;
+        }else {
+            return true;
         }
-        return (first != second);
     }
 
 

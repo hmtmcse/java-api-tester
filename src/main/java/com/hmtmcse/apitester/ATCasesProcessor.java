@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hmtmcse.apitester.json.*;
 import com.hmtmcse.common.ATExceptionHandler;
-import com.hmtmcse.common.HMTMUtil;
+import com.hmtmcse.hmutil.HMUtil;
+import com.hmtmcse.hmutil.MapKeyValue;
 import com.hmtmcse.http.HttpExceptionHandler;
 import com.hmtmcse.http.HttpRequest;
 import com.hmtmcse.http.HttpResponse;
@@ -120,17 +121,53 @@ public class ATCasesProcessor {
     }
 
 
+    private MapKeyValue jsonObjectToKeyValue(JSONObject jsonObject, String key){
+        MapKeyValue mapKeyValue = new MapKeyValue();
+       try {
+           mapKeyValue.value = jsonObject.get(key);
+           mapKeyValue.key = key;
+           return mapKeyValue;
+       }catch (Exception e){
+           return null;
+       }
+    }
+
+
     private Boolean assertionResolver(ATResponseAssertion atResponseAssertion, JSONObject jsonObject, Boolean isAnd){
         Boolean orCondition = false;
         Boolean andCondition = false;
+        ATAssertionData atAssertionData;
 
-        LinkedHashMap<String, Object> condition;
-        if (atResponseAssertion.equal != null){
-            condition = atResponseAssertion.equal;
-            Object object = new Object();
 
+        if (atResponseAssertion.equal != null) {
+            atAssertionData = ATAssertionData.instance().process(atResponseAssertion.equal, jsonObject);
+            if (atAssertionData == null){
+                orCondition = false;
+                andCondition = false;
+            }else{
+                if (atAssertionData.assertionHelper.isEqual(atAssertionData.assertionHelper.userDefineValue, atAssertionData.assertionHelper.apiResponseValue)){
+                    orCondition = true;
+                    andCondition = true;
+                }else{
+                    andCondition = false;
+                }
+            }
         }
-        if (atResponseAssertion.notEqual != null){}
+
+        if (atResponseAssertion.notEqual != null){
+            atAssertionData = ATAssertionData.instance().process(atResponseAssertion.notEqual, jsonObject);
+            if (atAssertionData == null){
+                orCondition = false;
+                andCondition = false;
+            }else{
+//                if (atAssertionData.assertionHelper.notEqual(atAssertionData.userDefineKeyValue.value, atAssertionData.apiResponseKeyValue.value)){
+//                    orCondition = true;
+//                    andCondition = true;
+//                }else{
+//                    andCondition = false;
+//                }
+            }
+        }
         if (atResponseAssertion.lessThan != null){}
         if (atResponseAssertion.lessThanEqual != null){}
         if (atResponseAssertion.greaterThan != null){}
@@ -211,7 +248,7 @@ public class ATCasesProcessor {
             LinkedHashMap<String, Object> map = mapper.convertValue(params, LinkedHashMap.class);
             return map;
         }catch (Exception e){
-            HMTMUtil.print(e.getMessage());
+            HMUtil.print(e.getMessage());
             return null;
         }
     }
