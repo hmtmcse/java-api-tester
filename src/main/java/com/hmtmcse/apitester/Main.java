@@ -10,7 +10,7 @@ public class Main {
         HMTMConfigHolder.isDebug = true;
 
         ATCasesProcessor atCasesProcessor = new ATCasesProcessor();
-        atCasesProcessor.run("test-data");
+        atCasesProcessor.run("W:\\codes\\jira-task-manager\\api-test-json");
         System.exit(0);
     }
 }

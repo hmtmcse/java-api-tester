@@ -13,7 +13,22 @@
         "class": 2
       },
       "response": {
-        "contextType": "application/json",
+        "jsonAssertion":{
+          "equal": {
+            "isSuccess": true
+          },
+          "greaterThanEqual": {
+            "total": 50
+          },
+          "and":{
+            "equal": {
+              "isSuccess": true
+            },
+            "greaterThanEqual": {
+              "total": 1000
+            }
+          }
+        },
         "httpCode": 200,
         "content": {
           "isDeleted": true,
