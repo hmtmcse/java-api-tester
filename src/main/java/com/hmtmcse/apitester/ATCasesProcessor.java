@@ -295,6 +295,8 @@ public class ATCasesProcessor {
                 return HttpRequest.PUT;
             case HttpRequest.DELETE:
                 return HttpRequest.DELETE;
+            case HttpRequest.DELETE_POST:
+                return HttpRequest.DELETE_POST;
             case HttpRequest.GET:
                 return HttpRequest.GET;
             default:
