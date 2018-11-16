@@ -1,5 +1,6 @@
 package com.hmtmcse.tmhelper;
 
+import com.hmtmcse.tmutil.TMUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.HashMap;
@@ -13,7 +14,12 @@ public class TMJson {
 
 
     public static Object parseJSONFromString(String content){
-        return new JSONObject(content);
+        try{
+            return new JSONObject(content);
+        }catch (Exception e){
+            TMUtil.print(e.getMessage());
+        }
+        return null;
     }
 
     public static String isArrayOrObject(Object object){
