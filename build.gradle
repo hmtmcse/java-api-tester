@@ -18,4 +18,9 @@ dependencies {
     compile group: 'org.json', name: 'json', version: '20180813'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
     compile group: 'com.hmtmcse.console', name: 'table', version: '1.0'
+    
+    
+    // YML
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.23'
+    
 }
