@@ -20,7 +20,5 @@ dependencies {
     compile group: 'com.hmtmcse.console', name: 'table', version: '1.0'
     
     
-    // YML
-    compile group: 'org.yaml', name: 'snakeyaml', version: '1.23'
     
 }
